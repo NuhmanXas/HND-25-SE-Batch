@@ -1,0 +1,11 @@
+
+.sidebar-container {
+    background-color: #003049;
+}
+
+.logo-container{
+    height: 70px;
+    /* border: 1px solid #fff; */
+    font-weight: bold;
+    font-size: 20px;
+}
