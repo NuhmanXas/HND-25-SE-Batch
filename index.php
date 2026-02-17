@@ -3,6 +3,13 @@ include './services/databaseConfig.php';
 include './layout/PageHead.php'; 
 
 $temp = "";
+session_start();
+
+if(isset($_SESSION['userId'])) {
+    header("Location: dashboard.php");
+    exit();
+}
+
 
 if(isset($_POST['loginUserForm'])) {
     $username = $_POST['username'];
@@ -10,9 +17,10 @@ if(isset($_POST['loginUserForm'])) {
     $sql = "select * from system_user su WHERE su.username = '$username' and 
     su.password = '$password' ";
     $result = mysqli_query($conn, $sql);
+
+
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        session_start();
         $_SESSION['userId'] = $row['id'];
         $_SESSION['name'] = $row['name'];
         $_SESSION['username'] = $row['username'];
