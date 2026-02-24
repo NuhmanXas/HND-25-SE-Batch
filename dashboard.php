@@ -15,6 +15,11 @@ if(isset($_POST['logout'])) {
 
 include './services/databaseConfig.php';
 include './layout/PageHead.php';
+
+$sql = "SELECT * FROM system_user";
+$result = mysqli_query($conn, $sql);
+
+
 ?>
 
 <link rel="stylesheet" href="./dashboard.css">
@@ -49,9 +54,34 @@ include './layout/PageHead.php';
             <div class="row">
                 <div class="col-lg-12 border d-flex justify-content-between align-items-center">
                     <h3>Dashboard</h3>
-                    <b class="text-uppercase d-flex align-items-center"><?php echo $_SESSION['username']; ?> <form method="post" action=""><button class="btn" type="submit" name="logout">Logout</button></form> </b>
+                    <b class="text-uppercase d-flex align-items-center"><?php echo htmlspecialchars($_SESSION['username']); ?> <form method="post" action=""><button class="btn" type="submit" name="logout">Logout</button></form> </b>
                 </div>
-            <div class="col-lg-12 border">Main container</div>
+            <div class="col-lg-12 border">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            if (mysqli_num_rows($result) > 0) {
+                                while($row = mysqli_fetch_assoc($result)) {
+                                    echo "<tr>";
+                                    echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['username']) . "</td>";
+                                    echo "</tr>";
+                                }
+                            } else {
+                                echo "<tr><td colspan='3'>No users found</td></tr>";
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
             </div>
         </div>
     </div>
