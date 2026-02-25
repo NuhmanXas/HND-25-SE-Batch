@@ -30,6 +30,59 @@ $result = mysqli_query($conn, $sql);
 <!-- Brand Icons -->
 <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
 
+<script>
+const data = {
+  labels: ["January", "February", "March", "April", "May", "June", "July"],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [65, 59, 80, 81, 56, 55, 40],
+    backgroundColor: [
+      'rgba(255, 99, 133, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+    borderWidth: 1
+  }]
+};
+
+const config = {
+  type: 'bar',
+  data: data,
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  },
+};
+
+const config2 = {
+  type: 'line',
+  data: data,
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  },
+};
+</script>
+
 <div class="container-fluid">
     <div class="row vh-100">
         <div class="col-lg-3 border sidebar-container">
@@ -57,30 +110,20 @@ $result = mysqli_query($conn, $sql);
                     <b class="text-uppercase d-flex align-items-center"><?php echo htmlspecialchars($_SESSION['username']); ?> <form method="post" action=""><button class="btn" type="submit" name="logout">Logout</button></form> </b>
                 </div>
             <div class="col-lg-12 border">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Username</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                            if (mysqli_num_rows($result) > 0) {
-                                while($row = mysqli_fetch_assoc($result)) {
-                                    echo "<tr>";
-                                    echo "<td>" . htmlspecialchars($row['id']) . "</td>";
-                                    echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                                    echo "<td>" . htmlspecialchars($row['username']) . "</td>";
-                                    echo "</tr>";
-                                }
-                            } else {
-                                echo "<tr><td colspan='3'>No users found</td></tr>";
-                            }
-                        ?>
-                    </tbody>
-                </table>
+               <div class="row">
+                <div class="col-lg-6"><canvas id="myChart"></canvas></div>
+               <div class="col-lg-6"><canvas id="myChart2"></canvas></div>
+               </div>
+                <script>
+                 const myChart = new Chart(
+                      document.getElementById('myChart'),
+                      config
+                 );
+                    const myChart2 = new Chart(
+                        document.getElementById('myChart2'),
+                        config2
+                    );
+                 </script>
             </div>
             </div>
         </div>

@@ -26,7 +26,7 @@ if(isset($_POST['loginUserForm'])) {
         $_SESSION['username'] = $row['username'];
         header("Location: dashboard.php");
     } else {
-        echo "<script>alert('Invalid username or password');</script>";
+        echo "<script>Swal.fire({ icon: 'error', title: 'Invalid username or password' });</script>";
     }
 }
 
