@@ -85,19 +85,19 @@ const config2 = {
 
 <div class="container-fluid">
     <div class="row vh-100">
-        <div class="col-lg-3 border sidebar-container">
+        <div class="col-lg-3 sidebar-container">
             <div class="row text-white">
                 <div class="col-lg-12 d-flex justify-content-center align-items-center logo-container">HND SE 25</div>
                 <div class="col-lg-12 navigation-container"> 
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link text-white active" href="#"> <i class="bx bx-dashboard" ></i>  Dashboard</a>
+                            <a class="nav-link text-white active" href="dashboard.php"> <i class="bx bx-dashboard" ></i>  Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#"> <i class="bx bx-user" ></i> Profile</a>
+                            <a class="nav-link text-white" href="profile.php"> <i class="bx bx-user" ></i> Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#"> <i class="bx bx-cog" ></i> Settings</a>
+                            <a class="nav-link text-white" href="settings.php"> <i class="bx bx-cog" ></i> Settings</a>
                         </li>
                     </ul>
                 </div>

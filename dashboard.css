@@ -14,3 +14,17 @@
     /* border: 1px solid #fff; */
 
 }
+
+
+.sidebar-container .nav-link:hover {
+    background-color: #d62828;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.active {
+    background-color: #d62828;
+    color: #fff;
+    border-radius: 5px;
+}
